@@ -16,7 +16,7 @@ export class ChatroomsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private shareService: ShareService , public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
 
   }
-
+ 
   ionViewDidLoad() {
     //console.log("displayName-navParams: "+this.navParams.get('displayName'));
     this.displayName = this.shareService.getDisplayName();
