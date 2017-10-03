@@ -12,7 +12,7 @@ export class ChatPage {
   }
 
   ionViewDidLoad() {
-    console.log("displayName: "+this.navParams.get('displayName'));
+    console.log("num: "+this.navParams.get('num'));
   }
   
 }
