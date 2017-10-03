@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { ShareService } from '../services/ShareService';
 
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'page-chatrooms',
   templateUrl: 'chatrooms.html'

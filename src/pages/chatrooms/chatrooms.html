@@ -24,4 +24,9 @@
             </h2>
         </ion-item>
     </ion-list>
+    <div id="details-container">
+        <p *ngFor="let item of items | async">
+            <!--<img src="../assets/images/pin.png">-->{{item.name}}</p>
+        <!--  - {{item.messages[0].sender}} - {{item.messages[0].message}} -->
+    </div>
 </ion-content>
