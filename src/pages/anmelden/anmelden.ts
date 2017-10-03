@@ -22,7 +22,7 @@ export class AnmeldenPage {
       displayName: this.displayName
     };
 
-    /*let modal = this.modalCtrl.create(ChatroomsPage);
+    /*TEST let modal = this.modalCtrl.create(ChatroomsPage);
     modal.present();*/
 
     this.shareService.setDisplayName(this.displayName);
