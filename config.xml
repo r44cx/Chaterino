@@ -21,7 +21,7 @@
     <preference name="FadeSplashScreenDuration" value="300" />
 
     <!--
-      Change these to configure how the splashscreen displays and fades in/out.
+      Change TEST these to configure how the splashscreen displays and fades in/out.
       More info here: https://github.com/apache/cordova-plugin-splashscreen
     -->
     <preference name="SplashShowOnlyFirstTime" value="false" />
