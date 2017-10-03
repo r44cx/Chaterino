@@ -13,13 +13,22 @@ import * as firebase from 'firebase/app';
 })
 export class ChatroomsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private shareService: ShareService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private shareService: ShareService , public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
+
   }
 
   ionViewDidLoad() {
     //console.log("displayName-navParams: "+this.navParams.get('displayName'));
     this.displayName = this.shareService.getDisplayName();
     console.log("displayName: "+this.displayName);
+    this.afAuth.auth.signInAnonymously();
+    
+    this.chatrooms = this.af.list('/chatrooms', {
+      query: {
+        limitToLast: 50
+      }
+    });
+    //this.items = FirebaseListObservable<any[]>;
   }
 
   goToChat(num) {

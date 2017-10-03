@@ -7,26 +7,13 @@
 </ion-header>
 <ion-content padding id="page2">
     <ion-list id="chatrooms-list">
-        <ion-item color="none" on-click="goToChat(0)" id="chatrooms-list-item0">
+        <ion-item color="none" on-click="goToChat(0)" *ngFor="let chatroom of chatrooms | async">
             <ion-avatar item-left>
                 <img />
             </ion-avatar>
             <h2>
-                {{displayName}}
-            </h2>
-        </ion-item>
-        <ion-item color="none" id="chatrooms-list-item1">
-            <ion-avatar item-left>
-                <img />
-            </ion-avatar>
-            <h2>
-                Item
+                {{chatroom.name}}
             </h2>
         </ion-item>
     </ion-list>
-    <div id="details-container">
-        <p *ngFor="let item of items | async">
-            <!--<img src="../assets/images/pin.png">-->{{item.name}}</p>
-        <!--  - {{item.messages[0].sender}} - {{item.messages[0].message}} -->
-    </div>
 </ion-content>
