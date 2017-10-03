@@ -16,5 +16,16 @@ export class ChatroomsPage {
     this.displayName = this.shareService.getDisplayName();
     console.log("displayName: "+this.displayName);
   }
+
+  goToChat(num) {
+    if(!num)
+      return alert("Something went wrong!");
+    
+    let data = {
+       num: num
+    };
+
+    this.navCtrl.push(ChatroomsPage, data);
+  }
   
 }
