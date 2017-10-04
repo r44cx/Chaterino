@@ -18,7 +18,7 @@ export class ChatPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider) {
     this.title = this.navParams.get('num');
   }
-
+ 
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
      
