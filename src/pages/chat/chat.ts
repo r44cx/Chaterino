@@ -26,7 +26,7 @@ export class ChatPage {
     this.title = this.navParams.get('num');
     this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
     this.displayName = this.shareService.getDisplayName();
-  }
+  }  
  
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
@@ -38,7 +38,7 @@ export class ChatPage {
     this.chatMessages.push({ sender: this.displayName, message: this.chatMessage});
     this.chatMessage = "";
   }
-
+ 
   async taskPicture(): Promise<any> {
     try {
       this.image = await this.camera.getPicture(this.options);
