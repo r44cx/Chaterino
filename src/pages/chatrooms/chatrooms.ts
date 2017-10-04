@@ -2,32 +2,38 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { ShareService } from '../services/ShareService';
 
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
+//import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListObservable } from 'angularfire2/database';
+//import { AngularFireAuth } from 'angularfire2/auth';
+//import { Observable } from 'rxjs/Observable';
+//import * as firebase from 'firebase/app';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
+import { ChatPage } from '../chat/chat';
 
 @Component({
   selector: 'page-chatrooms',
   templateUrl: 'chatrooms.html'
 })
 export class ChatroomsPage {
+  chatrooms: FirebaseListObservable<any[]>;
+  newChatMessage = '';
+  displayName = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private shareService: ShareService , public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider/*, public afAuth: AngularFireAuth, public af: AngularFireDatabase*/) {
+    this.chatrooms = this.firebaseProvider.getChatrooms();
   }
 
   ionViewDidLoad() {
-    //console.log("displayName-navParams: "+this.navParams.get('displayName'));
     this.displayName = this.shareService.getDisplayName();
-    console.log("displayName: "+this.displayName);
-    this.afAuth.auth.signInAnonymously();
+
+    /*this.afAuth.auth.signInAnonymously();
     
     this.chatrooms = this.af.list('/chatrooms', {
       query: {
         limitToLast: 50
       }
-    });
+    });*/
     //this.items = FirebaseListObservable<any[]>;
   }
 
@@ -39,7 +45,14 @@ export class ChatroomsPage {
        num: num
     };
 
-    this.navCtrl.push(ChatroomsPage, data);
+    this.navCtrl.push(ChatPage, data);
   }
   
+  addItem() {
+    this.firebaseProvider.addChatrooms(this.newChatroom);
+  }
+ 
+  /*removeItem(id) {
+    this.firebaseProvider.removeChatroom(id);
+  }*/
 }

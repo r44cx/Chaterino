@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { AnmeldenPage } from '../pages/anmelden/anmelden';
 import { ChatroomsPage } from '../pages/chatrooms/chatrooms';
 import { ChatPage } from '../pages/chat/chat';
+import { ShareService } from '../pages/services/ShareService';
 
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
@@ -14,9 +15,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
 
-// New imports to update based on AngularFire2 version 4
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebaseProvider } from '../pages/providers/firebase/firebase';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBfl-ZE0eOUSB45UlCFgJzrG5k3jnEfKkU",
@@ -53,6 +54,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    FirebaseProvider,
+    ShareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

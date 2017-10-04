@@ -11,9 +11,11 @@ import { ShareService } from '../services/ShareService';
   templateUrl: 'anmelden.html'
 })
 export class AnmeldenPage {
+  displayName = '';
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private shareService: ShareService) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public shareService: ShareService) {
   }
+
   goToChatrooms(params){
     if (!params) params = {};
     

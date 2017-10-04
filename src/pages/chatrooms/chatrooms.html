@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content padding id="page2">
     <ion-list id="chatrooms-list">
-        <ion-item color="none" on-click="goToChat(0)" *ngFor="let chatroom of chatrooms | async">
+        <ion-item color="none" on-click="goToChat(chatroom.name)" *ngFor="let chatroom of chatrooms | async">
             <ion-avatar item-left>
                 <img />
             </ion-avatar>
@@ -15,5 +15,13 @@
                 {{chatroom.name}}
             </h2>
         </ion-item>
+        <!--{{chatrooms}}
+        <ion-item ng-click="goToChat($index)" ng-repeat="chatroom of chatrooms">
+            <!-- *ngFor="let chatroom of chatrooms; let i = index" [attr.data-index]="i" -->
+        <!--
+            <h2>
+                {{chatroom}} - {{$index}}
+            </h2>
+        </ion-item>-->
     </ion-list>
 </ion-content>
