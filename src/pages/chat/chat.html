@@ -6,8 +6,14 @@
     </ion-navbar>
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content class="home scroll">
     <ion-item color="none" class="list" *ngFor="let chatMessage of chatMessages | async">
+=======
+<ion-content class="home" style="overflow-y: hidden;">
+<ion-scroll scrollY="true" style="width: 100%; height: 100%;">
+    <ion-item color="none" *ngFor="let chatMessage of chatMessages | async">
+>>>>>>> 0d71a94b078f3685f9feee2700b3062147607e31
         <!--<ion-avatar item-left>
                     <img />
                 </ion-avatar>-->
@@ -15,6 +21,7 @@
             {{chatMessage.sender}}: {{chatMessage.message}}
         </h2>
     </ion-item>
+    </ion-scroll>
 </ion-content>
 
 <ion-content class="has-header center">
