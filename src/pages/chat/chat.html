@@ -6,8 +6,8 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="home">
-    <ion-item color="none" *ngFor="let chatMessage of chatMessages | async">
+<ion-content class="home scroll">
+    <ion-item color="none" class="list" *ngFor="let chatMessage of chatMessages | async">
         <!--<ion-avatar item-left>
                     <img />
                 </ion-avatar>-->
