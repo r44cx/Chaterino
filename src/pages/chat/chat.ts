@@ -8,14 +8,22 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
   templateUrl: 'chat.html'
 })
 export class ChatPage {
+  
+  title: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider) {
+  this.title = this.navParams.get('num');
   }
 
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
+     
 
     this.firebaseProvider.addChatMessage("id", "message");
   }
   
+    sendMessage() {
+
+    }
+   
 }

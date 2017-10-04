@@ -17,7 +17,7 @@ import { ChatPage } from '../chat/chat';
 })
 export class ChatroomsPage {
   chatrooms: FirebaseListObservable<any[]>;
-  newChatMessage = '';
+  newChatroom: String;
   displayName = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider/*, public afAuth: AngularFireAuth, public af: AngularFireDatabase*/) {
