@@ -7,17 +7,23 @@
 </ion-header>
 
 <ion-content class="home">
-    <ion-list>
-        <ion-item>{{message}}</ion-item>
-    </ion-list>
+    <ion-item color="none" *ngFor="let chatMessage of chatMessages | async">
+        <!--<ion-avatar item-left>
+                    <img />
+                </ion-avatar>-->
+        <h2>
+            {{chatMessage.sender}} + {{chatMessage.message}}
+        </h2>
+    </ion-item>
 </ion-content>
 
 <ion-content class="has-header center">
     <ion-footer>
         <ion-item>
 
-            <ion-input><input/></ion-input>
-            <button id="sendButton" block on-click="sendMessage()" clear item-right>▶</button>
+            <ion-input [(ngModel)]="chatMessage"></ion-input>
+            <button id="sendButton" block on-click="sendMessage()" clear item-right>Msg</button>
+            <button id="sendPhoto" clear item-right>Cam</button>
         </ion-item>
 
     </ion-footer>
