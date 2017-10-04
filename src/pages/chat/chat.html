@@ -1,7 +1,40 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            Chat
+            {{title}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+    <ion-list>
+        <ion-item>{{message}}</ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-content class="has-header center">
+    <ion-footer>
+        <ion-item>
+
+            <ion-input><input/></ion-input>
+            <button clear item-right>▶</button>
+        </ion-item>
+
+    </ion-footer>
+
+</ion-content>
+
+
+
+
+
+
+
+
+<!--<ion-header>
+    <ion-navbar>
+        <ion-title>
+            {{title}}
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -17,4 +50,4 @@
             <ion-input type="text" placeholder=""></ion-input>
         </ion-item>
     </form>
-</ion-content>
+</ion-content> -->
