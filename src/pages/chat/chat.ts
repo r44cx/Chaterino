@@ -18,13 +18,10 @@ export class ChatPage {
     this.title = this.navParams.get('num');
     this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
     this.displayName = this.shareService.getDisplayName();
-
   }
  
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
-     
-
     this.firebaseProvider.addChatMessage("id", "message");
   }
   
@@ -32,8 +29,5 @@ export class ChatPage {
     console.log("this.displayName: "+this.displayName+", this.chatMessage: "+this.chatMessage);
     this.chatMessages.push({ sender: this.displayName, message: this.chatMessage});
     this.chatMessage = "";
-
-    
   }
-   
 }
