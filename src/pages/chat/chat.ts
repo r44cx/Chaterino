@@ -2,12 +2,16 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { ShareService } from '../services/ShareService';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html'
 })
 export class ChatPage {
+  chatmessages: FirebaseListObservable<any[]>;
+  newChatMessage = '';
+  displayName = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider) {
   }
