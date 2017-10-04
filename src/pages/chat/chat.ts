@@ -9,14 +9,16 @@ import { FirebaseListObservable } from 'angularfire2/database';
   templateUrl: 'chat.html'
 })
 export class ChatPage {
-  chatmessages: FirebaseListObservable<any[]>;
-  newChatMessage = '';
-  displayName = '';
-  
+  chatMessages: FirebaseListObservable<any[]>;
+  displayName: String;
+  chatMessage: String;
   title: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider) {
     this.title = this.navParams.get('num');
+    this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
+    this.displayName = this.shareService.getDisplayName();
+
   }
  
   ionViewDidLoad() {
@@ -27,7 +29,11 @@ export class ChatPage {
   }
   
   sendMessage() {
+    console.log("this.displayName: "+this.displayName+", this.chatMessage: "+this.chatMessage);
+    this.chatMessages.push({ sender: this.displayName, message: this.chatMessage});
+    this.chatMessage = "";
 
+    
   }
    
 }

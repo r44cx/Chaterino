@@ -17,6 +17,10 @@ export class FirebaseProvider {
     }
     */
   }
+
+  getChatMessages(chatroom){
+    return this.afd.list('/chatrooms/'+chatroom+'/messages');
+  }
  
   addChatrooms(name) {
     this.afd.list('/chatrooms/').push(name);
@@ -27,6 +31,7 @@ export class FirebaseProvider {
   }*/
 
   addChatMessage(chatroom, message) {
-      console.log("fb:" +this.shareService.getDisplayName());
+
+      //console.log("fb:" +this.shareService.getDisplayName());
   }
 }

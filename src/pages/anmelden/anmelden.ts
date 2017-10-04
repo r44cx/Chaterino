@@ -16,9 +16,7 @@ export class AnmeldenPage {
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public shareService: ShareService) {
   }
 
-  goToChatrooms(params){
-    if (!params) params = {};
-    
+  goToChatrooms(){    
     // this.displayName not set when there is no value
     if(!this.displayName || this.displayName.length < 1)
       return alert("Bitte gib deinen Namen ein.");
