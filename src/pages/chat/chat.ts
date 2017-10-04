@@ -9,7 +9,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
   templateUrl: 'chat.html'
 })
 export class ChatPage {
-  chatmessages: FirebaseListObservable<any[]>;
+  chatMessages: FirebaseListObservable<any[]>;
   newChatMessage = '';
   displayName = '';
   

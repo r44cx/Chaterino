@@ -17,6 +17,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FirebaseProvider } from '../pages/providers/firebase/firebase';
 
 export const firebaseConfig = {
@@ -42,6 +43,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
