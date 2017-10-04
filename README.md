@@ -1,4 +1,5 @@
 # Chaterino
+(School Project)
 Ionic + Angular + Cordova + Firebase = Chat-App
 
 An Hybridapp with Ionic, Angular, Cordova and Firebase.

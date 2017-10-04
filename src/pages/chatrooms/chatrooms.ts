@@ -23,7 +23,7 @@ export class ChatroomsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider/*, public afAuth: AngularFireAuth, public af: AngularFireDatabase*/) {
     this.chatrooms = this.firebaseProvider.getChatrooms();
   }
-
+ 
   ionViewDidLoad() {
     this.displayName = this.shareService.getDisplayName();
 
