@@ -6,18 +6,17 @@ import { AnmeldenPage } from '../pages/anmelden/anmelden';
 import { ChatroomsPage } from '../pages/chatrooms/chatrooms';
 import { ChatPage } from '../pages/chat/chat';
 import { ShareService } from '../pages/services/ShareService';
-
-import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AngularFireModule } from 'angularfire2';
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { Camera } from '@ionic-native/camera';
 
+import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+//import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FirebaseProvider } from '../pages/providers/firebase/firebase';
 
 export const firebaseConfig = {
@@ -43,7 +42,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence(),
+//    AngularFirestoreModule.enablePersistence(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -58,7 +57,8 @@ export const firebaseConfig = {
     SplashScreen,
     FirebaseProvider,
     ShareService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera
   ]
 })
 export class AppModule {}

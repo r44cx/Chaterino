@@ -3,6 +3,7 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { ShareService } from '../services/ShareService';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'page-chat',
@@ -10,17 +11,18 @@ import { FirebaseListObservable } from 'angularfire2/database';
 })
 export class ChatPage {
   chatMessages: FirebaseListObservable<any[]>;
-<<<<<<< HEAD
-  newChatMessage = '';
-  displayName = '';
-  
-=======
   displayName: String;
   chatMessage: String;
->>>>>>> f7526be86153120520a48d14aaac7ab693c2a2dc
   title: String;
+  image: String;
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL, // FILE_URI
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider, public camera: Camera) {
     this.title = this.navParams.get('num');
     this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
     this.displayName = this.shareService.getDisplayName();
@@ -35,5 +37,14 @@ export class ChatPage {
     console.log("this.displayName: "+this.displayName+", this.chatMessage: "+this.chatMessage);
     this.chatMessages.push({ sender: this.displayName, message: this.chatMessage});
     this.chatMessage = "";
+  }
+
+  async taskPicture(): Promise<any> {
+    try {
+      this.image = await this.camera.getPicture(this.options);
+      console.log("this.image: "+this.image);
+    } catch(e) {
+      console.error(e);
+    }
   }
 }
