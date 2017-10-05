@@ -6,11 +6,11 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content [(ngModel)]="chatContent">
 
     <div class="message-wrap">
 
-        <div *ngFor="let chatMessage of chatMessages | async">
+        <div *ngFor="let chatMessage of chatMessages | async" class="message" [class.left]=" chatMessage.sender != displayName" [class.right]=" chatMessage.sender == displayName">
             <div class="msg-detail">
                 <div class="msg-info">
                     <p>
@@ -42,8 +42,22 @@
             </h2>
         </ion-item>
     </ion-scroll>
-</ion-content> -->
+</ion-content>-->
 
+
+
+<ion-footer no-border [style.height]="showEmojiPicker ? '255px' : '55px'">
+    <ion-grid class="input-wrap">
+        <ion-item>
+            <ion-input [(ngModel)]="chatMessage"></ion-input>
+
+            <button ion-button id="sendButton" on-click="sendMessage()" item-right>Msg</button>
+            <button ion-button id="sendPhoto" item-right>📷</button>
+        </ion-item>
+    </ion-grid>
+</ion-footer>
+
+<!--
 <ion-content class="has-header center">
     <ion-footer>
         <ion-item>
@@ -53,7 +67,7 @@
             <button ion-button id="sendPhoto" item-right>📷</button>
         </ion-item>
     </ion-footer>
-</ion-content>
+</ion-content>-->
 
 
 <!--

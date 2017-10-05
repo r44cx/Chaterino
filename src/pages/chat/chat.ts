@@ -10,6 +10,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'chat.html'
 })
 export class ChatPage {
+
   chatMessages: FirebaseListObservable<any[]>;
   displayName: String;
   chatMessage: String;
@@ -26,8 +27,10 @@ export class ChatPage {
     this.title = this.navParams.get('num');
     this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
     this.displayName = this.shareService.getDisplayName();
+    this.chatContent.scrollToBottom(300);
+    
   }  
- 
+  
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
     this.firebaseProvider.addChatMessage("id", "message");
