@@ -4,13 +4,16 @@ import { ShareService } from '../services/ShareService';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ViewChild } from '@angular/core';
+import { Content } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html'
 })
 export class ChatPage {
-
+  @ViewChild(Content) chatContent: Content;
   chatMessages: FirebaseListObservable<any[]>;
   displayName: String;
   chatMessage: String;
@@ -27,9 +30,7 @@ export class ChatPage {
     this.title = this.navParams.get('num');
     this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
     this.displayName = this.shareService.getDisplayName();
-    this.chatContent.scrollToBottom(300);
-    
-  }  
+  }
   
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
@@ -39,7 +40,8 @@ export class ChatPage {
   sendMessage() {
     console.log("this.displayName: "+this.displayName+", this.chatMessage: "+this.chatMessage);
     this.chatMessages.push({ sender: this.displayName, message: this.chatMessage, time: new Date().getTime() });
-    this.chatMessage = ""; 
+    this.chatMessage = "";
+    this.chatContent.scrollToBottom();
   }
  
   async taskPicture(): Promise<any> {
