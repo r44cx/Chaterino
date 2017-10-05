@@ -9,6 +9,8 @@ import { FirebaseListObservable } from 'angularfire2/database';
 //import * as firebase from 'firebase/app';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
+import { AfoListObservable, AfoObjectObservable, AngularFireOfflineDatabase } from 'angularfire2-offline/database';
+
 import { ChatPage } from '../chat/chat';
 
 @Component({
@@ -16,7 +18,7 @@ import { ChatPage } from '../chat/chat';
   templateUrl: 'chatrooms.html'
 })
 export class ChatroomsPage {
-  chatrooms: FirebaseListObservable<any[]>;
+  chatrooms: AfoListObservable<any[]>; //FirebaseListObservable<any[]>;
   newChatroom: String;
   displayName = '';
 

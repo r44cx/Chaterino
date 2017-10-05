@@ -14,6 +14,7 @@ import { HttpModule } from "@angular/http";
 import { Camera } from '@ionic-native/camera';
 
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 //import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -39,8 +40,9 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireOfflineModule,
     AngularFireAuthModule,
 //    AngularFirestoreModule.enablePersistence(),
     IonicModule.forRoot(MyApp)
