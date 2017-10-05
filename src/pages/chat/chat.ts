@@ -36,7 +36,7 @@ export class ChatPage {
   sendMessage() {
     console.log("this.displayName: "+this.displayName+", this.chatMessage: "+this.chatMessage);
     this.chatMessages.push({ sender: this.displayName, message: this.chatMessage, time: new Date().getTime() });
-    this.chatMessage = "";
+    this.chatMessage = ""; 
   }
  
   async taskPicture(): Promise<any> {
