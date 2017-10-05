@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { ShareService } from '../services/ShareService';
 import { FirebaseProvider } from '../providers/firebase/firebase';
@@ -18,7 +19,6 @@ export class ChatPage {
   displayName: String;
   chatMessage: String;
   title: String;
-  image: String;
   options: CameraOptions = {
     quality: 100,
     destinationType: this.camera.DestinationType.DATA_URL, // FILE_URI
@@ -29,6 +29,7 @@ export class ChatPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider, public camera: Camera) {
     this.title = this.navParams.get('num');
     this.chatMessages = this.firebaseProvider.getChatMessages(this.navParams.get('num'));
+    console.log(this.chatMessages);
     this.displayName = this.shareService.getDisplayName();
   }
   
@@ -47,10 +48,8 @@ export class ChatPage {
  
   async sendPhoto(): Promise<any> {
     try {
-      console.log("taking image...");
-      this.image = await this.camera.getPicture(this.options);
-      console.log("this.image: "+this.image);
-      this.chatMessages.push({ sender: this.displayName, photo: this.image, time: new Date().getTime() });
+      var image = await this.camera.getPicture(this.options);
+      this.chatMessages.push({ sender: this.displayName, photo: image, time: new Date().getTime() });
     } catch(e) {
       console.error(e);
     }

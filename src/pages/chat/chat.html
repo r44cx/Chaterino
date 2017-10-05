@@ -14,9 +14,14 @@
                     <p>
                         {{chatMessage.sender}}&nbsp;&nbsp;&nbsp;{{chatMessage.time}}</p>
                 </div>
-                <div class="msg-content">
+                <div class="msg-content" *ngIf="chatMessage.message">
                     <span class="triangle"></span>
                     <p class="line-breaker ">{{chatMessage.message}}</p>
+                </div>
+                <div class="msg-content" *ngIf="chatMessage.photo">
+                    <span class="triangle"></span>
+                    <!--{{chatMessage.photo}}-->
+                    <img src="data:image/png;base64,{{chatMessage.photo}}" style="max-width: 320px; height: auto;" />
                 </div>
             </div>
         </div>

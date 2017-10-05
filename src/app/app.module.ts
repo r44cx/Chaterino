@@ -15,6 +15,7 @@ import { Camera } from '@ionic-native/camera';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
+import { AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 //import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -59,6 +60,7 @@ export const firebaseConfig = {
     SplashScreen,
     FirebaseProvider,
     ShareService,
+    AngularFireOfflineDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera
   ]
