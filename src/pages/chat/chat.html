@@ -7,9 +7,7 @@
 </ion-header>
 
 <ion-content ng-model="chatContent">
-
     <div class="message-wrap">
-
         <div *ngFor="let chatMessage of chatMessages | async" class="message" [class.left]=" chatMessage.sender != displayName" [class.right]=" chatMessage.sender == displayName">
             <div class="msg-detail">
                 <div class="msg-info">
@@ -22,65 +20,16 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </ion-content>
-
-
-
-
-
-<!--<ion-content class="home" style="overflow-y: hidden;">
-    <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
-        <ion-item color="none" *ngFor="let chatMessage of chatMessages | async">
-            <!--<ion-avatar item-left>
-                    <img />
-                </ion-avatar>
-            <h2>
-                {{chatMessage.sender}}: {{chatMessage.message}}
-            </h2>
-        </ion-item>
-    </ion-scroll>
-</ion-content>-->
-
-
 
 <ion-footer no-border [style.height]="showEmojiPicker ? '255px' : '55px'">
     <ion-grid class="input-wrap">
         <ion-item>
             <ion-input [(ngModel)]="chatMessage"></ion-input>
 
-            <button ion-button id="sendButton" on-click="sendMessage()" item-right>Msg</button>
+            <button ion-button id="sendButton" on-click="sendMessage()" item-right>📤</button>
             <button ion-button id="sendPhoto" item-right>📷</button>
         </ion-item>
     </ion-grid>
 </ion-footer>
-
-<!--
-<ion-content class="has-header center">
-    <ion-footer>
-        <ion-item>
-            <ion-input [(ngModel)]="chatMessage"></ion-input>
-
-            <button ion-button id="sendButton" on-click="sendMessage()" item-right>Msg</button>
-            <button ion-button id="sendPhoto" on-click="sendPhoto()" item-right>📷</button>
-        </ion-item>
-    </ion-footer>
-</ion-content>-->
-
-
-<!--
-<ion-content padding id="page3">
-    <form id="chat-form3">
-        <ion-item color="none" id="chat-list-item4">
-            {{displayName}}
-        </ion-item>
-        <ion-item id="chat-input3">
-            <ion-label>
-                Input
-            </ion-label>
-            <ion-input type="text" placeholder=""></ion-input>
-        </ion-item>
-    </form>
-</ion-content> -->
