@@ -44,10 +44,12 @@ export class ChatPage {
     this.chatContent.scrollToBottom();
   }
  
-  async taskPicture(): Promise<any> {
+  async sendPhoto(): Promise<any> {
     try {
+      console.log("taking image...");
       this.image = await this.camera.getPicture(this.options);
       console.log("this.image: "+this.image);
+      this.chatMessages.push({ sender: this.displayName, photo: this.image, time: new Date().getTime() });
     } catch(e) {
       console.error(e);
     }
