@@ -5,7 +5,7 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
-<ion-content padding id="page2">
+<ion-content padding id="page2" ng-model="chatroomContent">
     <ion-list id="chatrooms-list">
         <ion-item color="none" on-click="goToChat(chatroom.name)" *ngFor="let chatroom of chatrooms | async">
             <!--<ion-avatar item-left>

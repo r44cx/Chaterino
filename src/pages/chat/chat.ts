@@ -6,7 +6,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ViewChild } from '@angular/core';
 import { Content } from 'ionic-angular';
-
+import { AfoListObservable, AfoObjectObservable, AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 @Component({
   selector: 'page-chat',
@@ -14,7 +14,7 @@ import { Content } from 'ionic-angular';
 })
 export class ChatPage {
   @ViewChild(Content) chatContent: Content;
-  chatMessages: FirebaseListObservable<any[]>;
+  chatMessages: AfoListObservable<any[]>;
   displayName: String;
   chatMessage: String;
   title: String;
