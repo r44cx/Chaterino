@@ -6,18 +6,43 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="home" style="overflow-y: hidden;">
+<ion-content>
+
+    <div class="message-wrap">
+
+        <div *ngFor="let chatMessage of chatMessages | async">
+            <div class="msg-detail">
+                <div class="msg-info">
+                    <p>
+                        {{chatMessage.sender}}&nbsp;&nbsp;&nbsp;{{chatMessage.time}}</p>
+                </div>
+                <div class="msg-content">
+                    <span class="triangle"></span>
+                    <p class="line-breaker ">{{chatMessage.message}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</ion-content>
+
+
+
+
+
+<!--<ion-content class="home" style="overflow-y: hidden;">
     <ion-scroll scrollY="true" style="width: 100%; height: 100%;">
         <ion-item color="none" *ngFor="let chatMessage of chatMessages | async">
             <!--<ion-avatar item-left>
                     <img />
-                </ion-avatar>-->
+                </ion-avatar>
             <h2>
                 {{chatMessage.sender}}: {{chatMessage.message}}
             </h2>
         </ion-item>
     </ion-scroll>
-</ion-content>
+</ion-content> -->
 
 <ion-content class="has-header center">
     <ion-footer>
