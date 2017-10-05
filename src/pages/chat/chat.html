@@ -23,8 +23,9 @@
     <ion-footer>
         <ion-item>
             <ion-input [(ngModel)]="chatMessage"></ion-input>
-            <button id="sendButton" block on-click="sendMessage()" clear item-right>Msg</button>
-            <button id="sendPhoto" clear item-right>📷</button>
+
+            <button ion-button id="sendButton" on-click="sendMessage()" item-right>Msg</button>
+            <button ion-button id="sendPhoto" item-right>📷</button>
         </ion-item>
     </ion-footer>
 </ion-content>
