@@ -35,6 +35,7 @@ export class ChatPage {
   ionViewDidLoad() {
     console.log("num: "+this.navParams.get('num'));
     this.firebaseProvider.addChatMessage("id", "message");
+    this.chatContent.scrollToBottom();
   }
    
   sendMessage() {
