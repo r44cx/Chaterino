@@ -11,8 +11,7 @@
         <div *ngFor="let chatMessage of chatMessages | async" class="message" [class.left]=" chatMessage.sender != displayName" [class.right]=" chatMessage.sender == displayName">
             <div class="msg-detail">
                 <div class="msg-info">
-                    <p>
-                        {{chatMessage.sender}}&nbsp;&nbsp;&nbsp;{{chatMessage.time}}</p>
+                    <p>{{chatMessage.sender}}&nbsp;&nbsp;&nbsp;{{chatMessage.time | date:'yyyy-MM-dd HH:mm'}}</p>
                 </div>
                 <div class="msg-content" *ngIf="chatMessage.message">
                     <span class="triangle"></span>

@@ -11,7 +11,7 @@ export class FirebaseProvider {
   getChatrooms() {
     console.log('getting chatrooms...');
     //return this.afd.list('/chatrooms/');
-    return this.afod.list('/chatrooms/');
+    return this.afod.list('/chatrooms/', { preserveSnapshot: true });
     /*
     , {
       query: {
@@ -29,7 +29,7 @@ export class FirebaseProvider {
       {
         query: {
           orderByChild: 'time',
-          limitToLast: 50
+          limitToLast: 10
         }
       });
     /*var ordered: 

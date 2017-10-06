@@ -23,15 +23,18 @@ export class ChatroomsPage {
   @ViewChild(Content) chatroomContent: Content;
   chatrooms: AfoListObservable<any[]>;//FirebaseListObservable<any[]>;//
   newChatroom: String;
+  searchTerm: String = ''
+  filteredChatrooms: String[] = [];
   displayName = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public shareService: ShareService, public firebaseProvider: FirebaseProvider/*, public afAuth: AngularFireAuth, public af: AngularFireDatabase*/) {
     this.chatrooms = this.firebaseProvider.getChatrooms();
   }
- 
+
   ionViewDidLoad() {
+    this.setFilteredItems();
     this.displayName = this.shareService.getDisplayName();
-    //this.chatroomContent.scrollToBottom();
+    this.chatroomContent.scrollToBottom();
 
     /*this.afAuth.auth.signInAnonymously();
     
@@ -40,24 +43,48 @@ export class ChatroomsPage {
         limitToLast: 50
       }
     });*/
-    //this.items = FirebaseListObservable<any[]>;
+    //this.items = FirebaseListObservable<any[]>;snapshots
+  }
+
+  setFilteredItems() {
+    this.chatrooms.subscribe(snapshots => {
+      /*snapshots.forEach(snapshot => {
+        console.log(snapshot.name);
+      });*/
+      console.log("fc: " + this.filteredChatrooms);
+      this.filteredChatrooms = snapshots.filter(snapshot => {
+        console.log("bla", snapshot.name.toLowerCase().indexOf(this.searchTerm));
+        return snapshot.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+      });
+      console.log(this.filteredChatrooms);
+    });
+
+    /*
+    this.chatrooms.filter((item) => {
+      console.log("item: " + item);
+      item.forEach((val) => {
+        console.log("fE: " + val);
+      })
+      //return item..toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      return null;
+    });*/
   }
 
   goToChat(num) {
-    if(!num)
+    if (!num)
       return alert("Something went wrong!");
-    
+
     let data = {
-       num: num
+      num: num
     };
 
     this.navCtrl.push(ChatPage, data);
   }
-  
+
   addItem() {
     this.firebaseProvider.addChatrooms(this.newChatroom);
   }
- 
+
   /*removeItem(id) {
     this.firebaseProvider.removeChatroom(id);
   }*/
